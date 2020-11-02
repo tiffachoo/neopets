@@ -265,6 +265,48 @@
 </template>
 
 <script>
+import { library, dom } from '@fortawesome/fontawesome-svg-core';
+import { 
+	faHome,
+	faPaw,
+	faEnvelope,
+	faGlobe,
+	faStar,
+	faComments,
+	faTrophy,
+	faShoppingCart,
+	faTv,
+	faQuestion,
+	faCommentAlt,
+	faArrowRight,
+	faArrowLeft,
+	faSign,
+	faGavel,
+	faGamepad,
+	faFile 
+} from '@fortawesome/free-solid-svg-icons';
+
+library.add(
+	faHome,
+	faPaw,
+	faEnvelope,
+	faGlobe,
+	faStar,
+	faComments,
+	faTrophy,
+	faShoppingCart,
+	faTv,
+	faQuestion,
+	faCommentAlt,
+	faArrowRight,
+	faArrowLeft,
+	faSign,
+	faGavel,
+	faGamepad,
+	faFile 
+);
+dom.watch();
+
 const data = {
 	user: {
 		name: 'kirby',
