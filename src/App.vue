@@ -81,8 +81,8 @@
 							<span class="nav-link-text">logout!</span>
 						</a>
 					</li>
-					<li class="nav-item nav-item-ad">
-						<img :src="`http://images.neopets.com/buttons/${getButton}.gif`" class="nav-ad">
+					<li class="nav-item nav-item-button">
+						<img :src="getButton" class="nav-button">
 					</li>
 					<li id="user" class="nav-item nav-item-user">
 						<span class="user-item">User: <a href="#" class="user-link">{{ user.name }}</a></span>
@@ -114,7 +114,7 @@
 			<main class="content">
 				<section class="content-header">
 					<div class="content-banner">
-						<div class="content-banner-image" style="--banner-image: url('http://images.neopets.com/new_shopkeepers/t_418.gif')"></div>
+						<div class="content-banner-image" :style="`--banner-image: url('${require('@/assets/shopkeepers/t_418.gif')}')`"></div>
 						<span class="content-banner-header">user.lookup</span>
 						<span class="content-banner-text-decor">whoareyou?</span>
 					</div>
@@ -171,7 +171,7 @@
 							</ul>
 						</div>
 						<div class="content-info-sheild">
-							<img :src="`http://images.neopets.com/images/shields/${getSheild}.gif`" class="content-info-sheild-img">
+							<img :src="require(`@/assets/shields/${getSheild}.gif`)" class="content-info-sheild-img">
 						</div>
 					</div>
 					<div class="content-quick">
@@ -211,7 +211,7 @@
 								class="content-pets-item"
 							>
 								<a href="#" class="content-pets-link">
-									<img class="content-pets-img" :src="`http://images.neopets.com/pets/happy/${pet.species}_${pet.color}_baby.gif`">
+									<img class="content-pets-img" :src="require(`@/assets/pets/happy/${pet.species}_${pet.color}_baby.gif`)">
 									<span class="content-pets-text">{{ pet.name }}</span>
 								</a>
 								<span class="content-pets-text">
@@ -240,7 +240,7 @@
 									class="content-trophies-item"
 								>
 									<img 
-										:src="trophy.id ? `http://images.neopets.com/trophies/${trophy.id}_${trophy.place}.gif` : trophy.img" 
+										:src="trophy.id ? require(`@/assets/trophies/${trophy.id}_${trophy.place}.gif`) : require(`@/assets/trophies/${trophy.img}`)" 
 										class="content-trophies-img">
 									<span v-if="trophy.place" :class="{'content-trophies-text-regular': trophy.place !== 1}" class="content-trophies-text">
 										{{ getRankText(trophy.place, trophy.text) }}
@@ -283,7 +283,7 @@ import {
 	faSign,
 	faGavel,
 	faGamepad,
-	faFile 
+	faFileAlt
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -303,7 +303,7 @@ library.add(
 	faSign,
 	faGavel,
 	faGamepad,
-	faFile 
+	faFileAlt
 );
 dom.watch();
 
@@ -398,40 +398,40 @@ const data = {
 			'Site Event': [
 				{
 					text: 'Serf',
-					img: 'http://images.neopets.com/medieval/bfm_shield.gif',
+					img: 'bfm_shield.gif',
 					points: 5
 				},
 				{
 					text: 'Expeditionist',
-					img: 'http://images.neopets.com/winter/plot_hic/hic_hannah_2.gif',
+					img: 'hic_hannah_2.gif',
 					points: 52
 				},
 				{
 					text: 'Cannoneer',
-					img: 'http://images.neopets.com/water/plot_com/com_pirate_w_4.gif',
+					img: 'com_pirate_w_4.gif',
 					points: 115
 				},
 				{
 					text: 'Daily Dare 2009',
-					img: 'http://images.neopets.com/games/aaa/trophies/2009/dd_trophies_1silver.gif'
+					img: 'dd_trophies_1silver.gif'
 				},
 				{
 					text: 'Atlas of the Ancients',
-					img: 'http://images.neopets.com/aota/trophies/aota_trophy_1.gif'
+					img: 'aota_trophy_1.gif'
 				},
 				{
 					text: 'Battledome Veteran',
-					img: 'http://images.neopets.com/dome/pages/bdtrophy_1.gif'
+					img: 'bdtrophy_1.gif'
 				}
 			],
 			'Site Feature': [
 				{
 					text: 'Defender of Neopia (Mission 4)',
-					img: 'http://images.neopets.com/games/defenders/medal5_27475.gif'
+					img: 'medal5_27475.gif'
 				},
 				{
 					text: 'Lutari Talisman',
-					img: 'http://images.neopets.com/mobile/talisman_80.gif'
+					img: 'talisman_80.gif'
 				}
 			],
 			'Game': [
@@ -536,8 +536,8 @@ export default {
 				'smallishgorm',
 				'bingo_120x60'
 			];
-			const random = Math.floor(Math.random() * ads.length)
-			return ads[random];
+			const random = Math.floor(Math.random() * ads.length);
+			return require(`@/assets/buttons/${ads[random]}.gif`);
 		}
 	},
 	methods: {
